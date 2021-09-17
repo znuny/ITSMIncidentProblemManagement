@@ -1,5 +1,6 @@
 # --
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -327,10 +328,10 @@ sub GetObjectAttributes {
 
         # fetch the result
         my %CustomerID;
+        ROW:
         while ( my @Row = $Self->{DBSlaveObject}->FetchrowArray() ) {
-            if ( $Row[0] ) {
-                $CustomerID{ $Row[0] } = $Row[0];
-            }
+            next ROW if !$Row[0];
+            $CustomerID{ $Row[0] } = $Row[0];
         }
 
         my %ObjectAttribute = (

@@ -1,7 +1,8 @@
 # --
-# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
-# $origin: otrs - 8207d0f681adcdeb5c1b497ac547a1d9749838d5 - Kernel/Modules/CustomerTicketProcess.pm
+# $origin: Znuny - 012b2cb0daf8519ff314f751ad03b62219f63331 - Kernel/Modules/CustomerTicketProcess.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -1072,7 +1073,7 @@ sub _GetParam {
             next DIALOGFIELD;
         }
     }
-    REQUIREDFIELDLOOP:
+
     for my $CurrentField (qw(Queue State Lock Priority)) {
         $Value = undef;
         if ( !$ValuesGotten{ $Self->{NameToID}{$CurrentField} } ) {
@@ -3520,7 +3521,6 @@ sub _StoreActivityDialog {
 
         $ActivityEntityID = $ProcessStartpoint->{Activity};
 
-        NEEDEDLOOP:
         for my $Needed (qw(Queue State Lock Priority)) {
 
             if ( !$TicketParam{ $Self->{NameToID}->{$Needed} } ) {
