@@ -1,8 +1,8 @@
 # --
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+# Copyright (C) 2021-2022 Znuny GmbH, https://znuny.org/
 # --
-# $origin: Znuny - 012b2cb0daf8519ff314f751ad03b62219f63331 - Kernel/Modules/CustomerTicketProcess.pm
+# $origin: Znuny - 460ef44565300c6b979b0743833e3800fdbebf81 - Kernel/Modules/CustomerTicketProcess.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -4077,8 +4077,10 @@ sub _DisplayProcessList {
     $Param{Errors}->{ProcessEntityIDInvalid} = ' ServerError'
         if ( $Param{ProcessEntityID} && !$Param{ProcessList}->{ $Param{ProcessEntityID} } );
 
-    # get layout object
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+
+    my $Config = $ConfigObject->Get('Ticket::Frontend::CustomerTicketProcess');
 
     $Param{ProcessList} = $LayoutObject->BuildSelection(
         Class        => 'Modernize Validate_Required' . ( $Param{Errors}->{ProcessEntityIDInvalid} || ' ' ),
@@ -4087,7 +4089,8 @@ sub _DisplayProcessList {
         SelectedID   => $Param{ProcessEntityID},
         PossibleNone => 1,
         Sort         => 'AlphanumericValue',
-        Translation  => 0,
+        Translation  => 1,
+        TreeView     => $Config->{ProcessListTreeView} || 0,
         AutoComplete => 'off',
     );
 

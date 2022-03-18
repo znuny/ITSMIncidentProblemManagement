@@ -1,8 +1,8 @@
 # --
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+# Copyright (C) 2021-2022 Znuny GmbH, https://znuny.org/
 # --
-# $origin: Znuny - 012b2cb0daf8519ff314f751ad03b62219f63331 - Kernel/Modules/AgentTicketEmail.pm
+# $origin: Znuny - 460ef44565300c6b979b0743833e3800fdbebf81 - Kernel/Modules/AgentTicketEmail.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -3300,18 +3300,9 @@ sub _MaskEmailNew {
 
     # show time accounting box
     if ( $ConfigObject->Get('Ticket::Frontend::AccountTime') ) {
-        if ( $ConfigObject->Get('Ticket::Frontend::NeedAccountedTime') ) {
-            $LayoutObject->Block(
-                Name => 'TimeUnitsLabelMandatory',
-                Data => \%Param,
-            );
-        }
-        else {
-            $LayoutObject->Block(
-                Name => 'TimeUnitsLabel',
-                Data => \%Param,
-            );
-        }
+        $Param{TimeUnitsBlock} = $LayoutObject->TimeUnits(
+            %Param,
+        );
         $LayoutObject->Block(
             Name => 'TimeUnits',
             Data => \%Param,

@@ -1,8 +1,8 @@
 # --
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
-# Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+# Copyright (C) 2021-2022 Znuny GmbH, https://znuny.org/
 # --
-# $origin: Znuny - 67742936e41da7e81285513aedb1e08f1bb48291 - Kernel/Modules/AgentTicketProcess.pm
+# $origin: Znuny - 460ef44565300c6b979b0743833e3800fdbebf81 - Kernel/Modules/AgentTicketProcess.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -2957,29 +2957,12 @@ sub _RenderArticle {
         )
     {
 
-        if ( $ConfigObject->Get('Ticket::Frontend::NeedAccountedTime') ) {
-
-            $LayoutObject->Block(
-                Name => 'TimeUnitsLabelMandatory',
-                Data => \%Param,
-            );
-            $Param{TimeUnitsRequired} = 'Validate_Required';
+        $Param{TimeUnitsRequired} = 1;
+        if ( $Param{ActivityDialogField}->{Config}->{TimeUnits} == 2 ) {
+            $Param{TimeUnitsRequired} = 1;
         }
         elsif ( $Param{ActivityDialogField}->{Config}->{TimeUnits} == 1 ) {
-
-            $LayoutObject->Block(
-                Name => 'TimeUnitsLabel',
-                Data => \%Param,
-            );
-            $Param{TimeUnitsRequired} = '';
-        }
-        else {
-
-            $LayoutObject->Block(
-                Name => 'TimeUnitsLabelMandatory',
-                Data => \%Param,
-            );
-            $Param{TimeUnitsRequired} = 'Validate_Required';
+            $Param{TimeUnitsRequired} = 0;
         }
 
         # Get TimeUnits value.
@@ -2991,6 +2974,9 @@ sub _RenderArticle {
             );
         }
 
+        $Param{TimeUnitsBlock} = $LayoutObject->TimeUnits(
+            %Param,
+        );
         $LayoutObject->Block(
             Name => 'TimeUnits',
             Data => \%Param,
@@ -5813,8 +5799,10 @@ sub _DisplayProcessList {
     $Param{Errors}->{ProcessEntityIDInvalid} = ' ServerError'
         if ( $Param{ProcessEntityID} && !$Param{ProcessList}->{ $Param{ProcessEntityID} } );
 
-    # get layout object
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+
+    my $Config = $ConfigObject->Get('Ticket::Frontend::AgentTicketProcess');
 
     $Param{ProcessList} = $LayoutObject->BuildSelection(
         Class        => 'Modernize Validate_Required' . ( $Param{Errors}->{ProcessEntityIDInvalid} || ' ' ),
@@ -5823,7 +5811,8 @@ sub _DisplayProcessList {
         SelectedID   => $Param{ProcessEntityID},
         PossibleNone => 1,
         Sort         => 'AlphanumericValue',
-        Translation  => 0,
+        Translation  => 1,
+        TreeView     => $Config->{ProcessListTreeView} || 0,
         AutoComplete => 'off',
     );
 
