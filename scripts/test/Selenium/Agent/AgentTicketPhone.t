@@ -2,7 +2,7 @@
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
 # Copyright (C) 2021-2022 Znuny GmbH, https://znuny.org/
 # --
-# $origin: Znuny - 012b2cb0daf8519ff314f751ad03b62219f63331 - scripts/test/Selenium/Agent/AgentTicketPhone.t
+# $origin: Znuny - f54d3dc4be84e0546605e45a6bad23cd0c3e760d - scripts/test/Selenium/Agent/AgentTicketPhone.t
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -20,7 +20,7 @@ my $Selenium = $Kernel::OM->Get('Kernel::System::UnitTest::Selenium');
 $Selenium->RunTest(
     sub {
 
-        my $Helper       = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
+        my $HelperObject = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
         my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
         # Overload CustomerUser => Map setting defined in the Defaults.pm - use external url.
@@ -37,19 +37,19 @@ $Selenium->RunTest(
             '',
             'AsPopup OTRSPopup_TicketAction',
         ];
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Key   => 'CustomerUser',
             Value => $DefaultCustomerUser,
         );
 
         # Do not check email addresses.
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Key   => 'CheckEmailAddresses',
             Value => 0,
         );
 
         # Do not check RichText.
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'Frontend::RichText',
             Value => 0,
@@ -58,7 +58,7 @@ $Selenium->RunTest(
 # ITSMIncidentProblemManagement
 # ---
 
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'Ticket::Frontend::AgentTicketPhone###DynamicField',
             Value => {
@@ -70,7 +70,7 @@ $Selenium->RunTest(
 # ---
 
         # Do not check service and type.
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'Ticket::Service',
 # ---
@@ -80,7 +80,7 @@ $Selenium->RunTest(
             Value => 1,
 # ---
         );
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'Ticket::Type',
 # ---
@@ -92,7 +92,7 @@ $Selenium->RunTest(
         );
 
         # Create test user.
-        my $TestUserLogin = $Helper->TestUserCreate(
+        my $TestUserLogin = $HelperObject->TestUserCreate(
 # ---
 # ITSMIncidentProblemManagement
 # ---
@@ -106,7 +106,7 @@ $Selenium->RunTest(
             UserLogin => $TestUserLogin,
         );
 
-        my $RandomID = $Helper->GetRandomID();
+        my $RandomID = $HelperObject->GetRandomID();
 
         # Add test customer for testing.
         my $TestCustomer       = 'Customer' . $RandomID;
@@ -210,7 +210,7 @@ $Selenium->RunTest(
         my $ServiceObject = $Kernel::OM->Get('Kernel::System::Service');
 
         # Create test service.
-        my $ServiceName = "Selenium" . $Helper->GetRandomID();
+        my $ServiceName = "Selenium" . $HelperObject->GetRandomID();
         my $ServiceID   = $ServiceObject->ServiceAdd(
             Name        => $ServiceName,
             ValidID     => 1,
@@ -340,7 +340,7 @@ $Selenium->RunTest(
             '',
             'AsPopup OTRSPopup_TicketAction',
         ];
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Key   => 'CustomerUser',
             Value => $DefaultCustomerUser,
         );
@@ -513,7 +513,7 @@ $Selenium->RunTest(
 # ---
         # Verify Service Incident State is not available when config 'Ticket::Frontend::AgentTicketPhone###ShowIncidentState'
         #   is disabled. See bug#14150 (https://bugs.otrs.org/show_bug.cgi?id=14150)
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Key   => 'Ticket::Frontend::AgentTicketPhone###ShowIncidentState',
             Value => 0,
         );

@@ -2,7 +2,7 @@
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
 # Copyright (C) 2021-2022 Znuny GmbH, https://znuny.org/
 # --
-# $origin: Znuny - 012b2cb0daf8519ff314f751ad03b62219f63331 - scripts/test/Selenium/Agent/AgentTicketPhone/ServiceDropdown.t
+# $origin: Znuny - f54d3dc4be84e0546605e45a6bad23cd0c3e760d - scripts/test/Selenium/Agent/AgentTicketPhone/ServiceDropdown.t
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -37,17 +37,17 @@ $Selenium->RunTest(
     sub {
 
         # get helper object
-        my $Helper = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
+        my $HelperObject = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 
         # update sysconfig settings
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'Ticket::Service',
             Value => 1,
         );
 
         # create test user and login
-        my $TestUserLogin = $Helper->TestUserCreate(
+        my $TestUserLogin = $HelperObject->TestUserCreate(
             Groups => ['users'],
         ) || die "Did not get test user";
 
@@ -64,7 +64,7 @@ $Selenium->RunTest(
         my $TicketObject  = $Kernel::OM->Get('Kernel::System::Ticket');
 
         # create a test customer
-        my $TestUserCustomer = $Helper->TestCustomerUserCreate()
+        my $TestUserCustomer = $HelperObject->TestCustomerUserCreate()
             || die "Did not get test customer user";
 
         # create a ticket from the just created customer
@@ -84,7 +84,7 @@ $Selenium->RunTest(
             "Ticket is created - $TicketID",
         );
 
-        my $TestService = "Service-" . $Helper->GetRandomID();
+        my $TestService = "Service-" . $HelperObject->GetRandomID();
 
         # create a test service
         my $ServiceID = $ServiceObject->ServiceAdd(

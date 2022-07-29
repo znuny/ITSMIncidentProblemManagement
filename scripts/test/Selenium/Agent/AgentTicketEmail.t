@@ -2,7 +2,7 @@
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
 # Copyright (C) 2021-2022 Znuny GmbH, https://znuny.org/
 # --
-# $origin: otrs - 8207d0f681adcdeb5c1b497ac547a1d9749838d5 - scripts/test/Selenium/Agent/AgentTicketEmail.t
+# $origin: otrs - 2012caffdec4d7cedb8c9814e778c7eb31470490 - scripts/test/Selenium/Agent/AgentTicketEmail.t
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -20,26 +20,26 @@ my $Selenium = $Kernel::OM->Get('Kernel::System::UnitTest::Selenium');
 $Selenium->RunTest(
     sub {
 
-        my $Helper             = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
+        my $HelperObject       = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
         my $SignatureObject    = $Kernel::OM->Get('Kernel::System::Signature');
         my $QueueObject        = $Kernel::OM->Get('Kernel::System::Queue');
         my $CustomerUserObject = $Kernel::OM->Get('Kernel::System::CustomerUser');
 
         # Disable check email addresses.
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Key   => 'CheckEmailAddresses',
             Value => 0,
         );
 
         # Do not check RichText.
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'Frontend::RichText',
             Value => 0,
         );
 
         # Do not check service and type.
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'Ticket::Service',
 # ---
@@ -49,7 +49,7 @@ $Selenium->RunTest(
             Value => 1,
 # ---
         );
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'Ticket::Type',
 # ---
@@ -61,14 +61,14 @@ $Selenium->RunTest(
         );
 
         # Enable session management use html cookies.
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'SessionUseCookie',
             Value => 1,
         );
 
         # Define random test variable.
-        my $RandomID = $Helper->GetRandomID();
+        my $RandomID = $HelperObject->GetRandomID();
 
         my @SignatureIDs;
         my @QueueIDs;
@@ -143,7 +143,7 @@ $Selenium->RunTest(
         }
 
         # Create test user and login.
-        my $TestUserLogin = $Helper->TestUserCreate(
+        my $TestUserLogin = $HelperObject->TestUserCreate(
 # ---
 # ITSMIncidentProblemManagement
 # ---
@@ -224,7 +224,7 @@ $Selenium->RunTest(
         );
 
         # create test service
-        my $ServiceName = "Selenium" . $Helper->GetRandomID();
+        my $ServiceName = "Selenium" . $HelperObject->GetRandomID();
         my $ServiceID   = $ServiceObject->ServiceAdd(
             Name        => $ServiceName,
             ValidID     => 1,
@@ -422,7 +422,7 @@ $Selenium->RunTest(
 # ---
 
         # Disable session management use html cookies to check signature update (see bug#12890).
-        $Helper->ConfigSettingChange(
+        $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'SessionUseCookie',
             Value => 0,
