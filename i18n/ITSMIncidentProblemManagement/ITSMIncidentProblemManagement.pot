@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ITSMIncidentProblemManagement\n"
-"POT-Creation-Date: 2020-01-24 14:16+0000\n"
+"POT-Creation-Date: 2022-11-08 13:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,15 +10,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Template: AgentTicketOverviewMedium
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Criticality"
 msgstr ""
 
-#. Template: AgentTicketOverviewMedium
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Impact"
 msgstr ""
 
-#. JS Template: ServiceIncidentState
+#. JS Template: Kernel/Output/JavaScript/Templates/Standard/Agent/ITSMIncidentProblemManagement/ServiceIncidentState.html.tmpl
 msgid "Service Incident State"
 msgstr ""
 
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Due Date"
 msgstr ""
 
-#. Database XML Definition: ITSMIncidentProblemManagement.sopm
+#. XML Definition: ITSMIncidentProblemManagement.sopm
 msgid "closed with workaround"
 msgstr ""
 

@@ -1,5 +1,4 @@
 # --
-# Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
 # Copyright (C) 2021-2022 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
@@ -16,11 +15,11 @@ use utf8;
 sub Data {
     my $Self = shift;
 
-    # Template: AgentTicketOverviewMedium
+    # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
     $Self->{Translation}->{'Criticality'} = 'Criticidade';
     $Self->{Translation}->{'Impact'} = 'Impacto';
 
-    # JS Template: ServiceIncidentState
+    # JS Template: Kernel/Output/JavaScript/Templates/Standard/Agent/ITSMIncidentProblemManagement/ServiceIncidentState.html.tmpl
     $Self->{Translation}->{'Service Incident State'} = 'Estado de Incidente do Serviço';
 
     # Perl Module: Kernel/Output/HTML/FilterElementPost/ITSMIncidentProblemManagement.pm
@@ -40,7 +39,7 @@ sub Data {
     $Self->{Translation}->{'Decision Date'} = 'Data da Decisão';
     $Self->{Translation}->{'Due Date'} = 'Data vencimento';
 
-    # Database XML / SOPM Definition: ITSMIncidentProblemManagement.sopm
+    # XML Definition: ITSMIncidentProblemManagement.sopm
     $Self->{Translation}->{'closed with workaround'} = 'fechado com solução de contorno';
 
     # SysConfig
