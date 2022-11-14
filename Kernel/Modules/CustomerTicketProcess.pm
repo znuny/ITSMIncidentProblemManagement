@@ -10,7 +10,7 @@
 # --
 
 package Kernel::Modules::CustomerTicketProcess;
-## nofilter(TidyAll::Plugin::OTRS::Perl::DBObject)
+## nofilter(TidyAll::Plugin::Znuny::Perl::DBObject)
 
 use strict;
 use warnings;
