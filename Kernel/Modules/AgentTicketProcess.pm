@@ -1,8 +1,8 @@
 # --
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
-# Copyright (C) 2021-2022 Znuny GmbH, https://znuny.org/
+# Copyright (C) 2012-2022 Znuny GmbH, http://znuny.com/
 # --
-# $origin: Znuny - 0ec31ad696462e8dd9fd62329cccbe655f13329e - Kernel/Modules/AgentTicketProcess.pm
+# $origin: Znuny - 3849daa20c8bc0ea68a5c4eb8bd8bddf96ae87fd - Kernel/Modules/AgentTicketProcess.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -3042,7 +3042,7 @@ sub _RenderArticle {
         }
 
         # Get TimeUnits value.
-        $Param{TimeUnits} = $Param{GetParam}{TimeUnits};
+        $Param{TimeUnits} = $Param{GetParam}->{TimeUnits};
 
         if ( !defined $Param{TimeUnits} && $Self->{ArticleID} ) {
             $Param{TimeUnits} = $Self->_GetTimeUnits(

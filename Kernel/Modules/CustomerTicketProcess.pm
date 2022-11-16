@@ -1,8 +1,8 @@
 # --
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
-# Copyright (C) 2021-2022 Znuny GmbH, https://znuny.org/
+# Copyright (C) 2012-2022 Znuny GmbH, http://znuny.com/
 # --
-# $origin: Znuny - 0ec31ad696462e8dd9fd62329cccbe655f13329e - Kernel/Modules/CustomerTicketProcess.pm
+# $origin: Znuny - 7c326dbe937cb8dde588ca71e034e6acf782f2eb - Kernel/Modules/CustomerTicketProcess.pm
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -725,7 +725,7 @@ sub _RenderAjax {
             );
             $FieldsProcessed{ $Self->{NameToID}{$CurrentField} } = 1;
         }
-        
+
         elsif (
             $Self->{NameToID}{$CurrentField} eq 'Article'
             && $Param{GetParam}->{ElementChanged} eq 'StandardTemplateID'
@@ -1196,11 +1196,7 @@ sub _GetParam {
     # and finally we'll have the special parameters:
     $GetParam{ResponsibleAll} = $ParamObject->GetParam( Param => 'ResponsibleAll' );
     $GetParam{OwnerAll}       = $ParamObject->GetParam( Param => 'OwnerAll' );
-# ---
-# ITSMIncidentProblemManagement
-# ---
     $GetParam{ElementChanged} = $ParamObject->GetParam( Param => 'ElementChanged' );
-# ---
 
     return \%GetParam;
 }
