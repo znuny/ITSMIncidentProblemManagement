@@ -15,10 +15,6 @@ use utf8;
 sub Data {
     my $Self = shift;
 
-    # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-    $Self->{Translation}->{'Criticality'} = 'Kritikalität';
-    $Self->{Translation}->{'Impact'} = 'Auswirkung';
-
     # JS Template: Kernel/Output/JavaScript/Templates/Standard/Agent/ITSMIncidentProblemManagement/ServiceIncidentState.html.tmpl
     $Self->{Translation}->{'Service Incident State'} = 'Service-Vorfallstatus';
 
