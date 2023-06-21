@@ -40,9 +40,11 @@ sub Run {
     return if !$Param{TemplateFile};
 
     # get needed objects
-    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
-    my $TicketObject = $Kernel::OM->Get('Kernel::System::Ticket');
+    my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
+    my $LayoutObject  = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $TicketObject  = $Kernel::OM->Get('Kernel::System::Ticket');
+    my $ParamObject   = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $ServiceObject = $Kernel::OM->Get('Kernel::System::Service');
 
     # get allowed template names
     my $ValidTemplates
@@ -55,7 +57,7 @@ sub Run {
     if ( $Param{TemplateFile} eq 'AgentTicketZoom' ) {
 
         # get ticket id
-        my $TicketID = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'TicketID' );
+        my $TicketID = $ParamObject->GetParam( Param => 'TicketID' );
 
         # Get ticket attributes.
         my %Ticket = $TicketObject->TicketGet(
@@ -73,7 +75,7 @@ sub Run {
             );
 
             # get service data
-            my %Service = $Kernel::OM->Get('Kernel::System::Service')->ServiceGet(
+            my %Service = $ServiceObject->ServiceGet(
                 IncidentState => 1,
                 ServiceID     => $Ticket{ServiceID},
                 UserID        => 1,
@@ -85,12 +87,14 @@ sub Run {
 
             my $ServiceIncidentStateHTML = <<"END";
 
-            <label>$TranslatedServiceIncidentStateLabel:</label>
-            <div class="Value">
-                <div class="Flag Small">
-                    <span class="$InciSignals{ $Service{CurInciStateType} }" title="$TranslatedCurInciState"></span>
+            <div class="field-wrapper">
+                <label>$TranslatedServiceIncidentStateLabel:</label>
+                <div class="Value">
+                    <div class="Flag Small">
+                        <span class="$InciSignals{ $Service{CurInciStateType} }" title="$TranslatedCurInciState"></span>
+                    </div>
+                    <span>$TranslatedCurInciState</span>
                 </div>
-                <span>$TranslatedCurInciState</span>
             </div>
 END
 
@@ -106,6 +110,7 @@ END
         }
 
         # Move Criticality Impact Priority and other ITSM Dynamic Fields before the CustomerID field
+        FIELDNAME:
         for my $FieldName (
             'Criticality',
             'Impact',
@@ -121,18 +126,17 @@ END
 
             my $TranslatedFieldLabel = $LayoutObject->{LanguageObject}->Translate($FieldName);
             my $FieldPattern         = '<label>' . $TranslatedFieldLabel . ':</label>.+?<div class="Clear"></div>';
-            if ( ${ $Param{Data} } =~ m{($FieldPattern)}ms ) {
+            next FIELDNAME if ${ $Param{Data} } !~ m{($FieldPattern)}ms;
 
-                my $Field = $1;
+            my $Field = $1;
 
-                # remove field from the old position
-                ${ $Param{Data} } =~ s{$FieldPattern}{}ms;
+            # remove field from the old position
+            ${ $Param{Data} } =~ s{$FieldPattern}{}ms;
 
-                my $TranslatedCustomerIDLabel = $LayoutObject->{LanguageObject}->Translate('Customer ID');
+            my $TranslatedCustomerIDLabel = $LayoutObject->{LanguageObject}->Translate('Customer ID');
 
-                # add before the Customer ID field
-                ${ $Param{Data} } =~ s{(<label>$TranslatedCustomerIDLabel:</label>)}{$Field\n$1}ms;
-            }
+            # add before the Customer ID field
+            ${ $Param{Data} } =~ s{(<label>$TranslatedCustomerIDLabel:</label>)}{$Field\n$1}ms;
         }
 
         return 1;
@@ -154,14 +158,15 @@ END
 
         # get FormID
         my $FormID;
-        if ( ${ $Param{Data} } =~ m{<input type="hidden" name="FormID" value="([^<>]+)"/>}ms ) {
+        if ( ${ $Param{Data} } =~ m{<input type="hidden" name="FormID" value="([^"]+?)"}ms ) {
             $FormID = $1;
         }
 
         # add "Link Ticket" link
         my $TranslatedString = $LayoutObject->{LanguageObject}->Translate('Link ticket');
+
         ${ $Param{Data} }
-            =~ s{(<!-- OutputFilterHook_TicketOptionsEnd -->)}{<a href="$LayoutObject->{Baselink}Action=AgentLinkObject;Mode=Temporary;SourceObject=Ticket;SourceKey=$FormID;TargetIdentifier=ITSMConfigItem" id="OptionLinkTicket" class="AsPopup">[ $TranslatedString ]</a>\n$1}ms;
+            =~ s{(<!-- OutputFilterHook_TicketOptionsEnd -->)}{<a href="$LayoutObject->{Baselink}Action=AgentLinkObject;Mode=Temporary;SourceObject=Ticket;SourceKey=$FormID;TargetIdentifier=ITSMConfigItem" id="OptionLinkTicket" class="AsPopup">$TranslatedString</a>\n$1}ms;
     }
 
     # For all AgentTicketActionCommon based templates
@@ -206,12 +211,10 @@ END
     }
 
     # Define criticality field search pattern, use without the x modifier and non greedy match (.+?)
-    my $CriticalityFieldPattern
-        = '<div class="Row Row_DynamicField_ITSMCriticality">.+?<div class="Clear"></div>\s*</div>';
+    my $CriticalityFieldPattern = '<div class="Row Row_DynamicField_ITSMCriticality .+?<select .+?</div>\s*</div>';
 
     # Find criticality field and move before the priority field
     if ( ${ $Param{Data} } =~ m{($CriticalityFieldPattern)}ms ) {
-
         my $CriticalityField = $1;
 
         # Only if priority is visible on the screen
@@ -226,7 +229,7 @@ END
     }
 
     # Define impact field search pattern, use without the x modifier and non greedy match (.+?)
-    my $ImpactFieldPattern = '<div class="Row Row_DynamicField_ITSMImpact">.+?<div class="Clear"></div>\s*</div>';
+    my $ImpactFieldPattern = '<div class="Row Row_DynamicField_ITSMImpact .+?<select .+?</div>\s*</div>';
 
     # Find Impact field and move before the priority field
     if ( ${ $Param{Data} } =~ m{($ImpactFieldPattern)}ms ) {

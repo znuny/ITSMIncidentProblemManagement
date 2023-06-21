@@ -2,8 +2,8 @@
 <otrs_package version="1.0">
     <Name>ITSMIncidentProblemManagement</Name>
     <Version>6.5.1</Version>
-    <Framework>6.5.x</Framework>
-    <PackageRequired Version="6.5.1">ITSMCore</PackageRequired>
+    <Framework>7.0.x</Framework>
+    <PackageRequired Version="7.0.1">ITSMCore</PackageRequired>
     <Vendor>Znuny</Vendor>
     <URL>https://www.znuny.org/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
@@ -91,6 +91,7 @@
             <Data Key="comments" Type="Quote">Ticket is closed with workaround.</Data>
             <Data Key="type_id">3</Data>
             <Data Key="valid_id">1</Data>
+            <Data Key="color" Type="Quote">#3DD598</Data>
             <Data Key="create_time">current_timestamp</Data>
             <Data Key="create_by">1</Data>
             <Data Key="change_time">current_timestamp</Data>
