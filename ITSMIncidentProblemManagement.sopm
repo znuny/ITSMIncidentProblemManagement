@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <otrs_package version="1.0">
     <Name>ITSMIncidentProblemManagement</Name>
-    <Version>6.5.1</Version>
+    <Version>7.0.1</Version>
     <Framework>7.0.x</Framework>
     <PackageRequired Version="7.0.1">ITSMCore</PackageRequired>
     <Vendor>Znuny</Vendor>
@@ -11,6 +11,7 @@
     <Description Lang="de">Das OTRS::ITSM Incident und Problem Management Paket.</Description>
     <Description Lang="es">Paquete Incident and Problem Management de OTRS::ITSM.</Description>
     <Description Lang="hu">Az OTRS::ITSM incidens- és problémamenedzsment csomag.</Description>
+    <ChangeLog Version="7.0.1" Date="2023-06-21 17:06:14 +0200">Initial release for Znuny 7.0.</ChangeLog>
     <ChangeLog Version="6.5.1" Date="2023-02-20 16:01:15 +0100">Initial release for Znuny 6.5.</ChangeLog>
     <ChangeLog Version="6.4.3" Date="2022-11-09 09:31:26 +0100">Updated translations.</ChangeLog>
     <ChangeLog Version="6.4.2" Date="2022-07-29 08:52:35 +0200">Initital release for Znuny 6.4.2.</ChangeLog>
