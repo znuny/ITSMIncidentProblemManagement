@@ -2,8 +2,8 @@
 # Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::Language::de_ITSMIncidentProblemManagement;
@@ -39,7 +39,7 @@ sub Data {
     $Self->{Translation}->{'closed with workaround'} = 'provisorisch geschlossen';
 
     # SysConfig
-    $Self->{Translation}->{'Add a decision!'} = 'Bitte fügen Sie eine Entscheidung hinzu.';
+    $Self->{Translation}->{'Add a decision!'} = 'Fügen Sie eine Entscheidung hinzu!';
     $Self->{Translation}->{'Additional ITSM Fields'} = 'Zusätzliche ITSM-Felder';
     $Self->{Translation}->{'Additional ITSM ticket fields.'} = 'Zusätzliche ITSM-Ticketfelder.';
     $Self->{Translation}->{'Allows adding notes in the additional ITSM field screen of the agent interface.'} =
@@ -147,7 +147,7 @@ sub Data {
         'Zeigt die Titelfelder in der Ansicht "Zusätzliche ITSM-Fdelder" im Agenten-Interface.';
     $Self->{Translation}->{'Shows the title fields in the decision screen of the agent interface.'} =
         'Zeigt die Titelfelder in der Ansicht "Entscheidung" im Agenten-Interface.';
-    $Self->{Translation}->{'Ticket decision.'} = 'Ticket-Entscheidung';
+    $Self->{Translation}->{'Ticket decision.'} = 'Ticket-Entscheidung.';
 
 
     push @{ $Self->{JavaScriptStrings} // [] }, (

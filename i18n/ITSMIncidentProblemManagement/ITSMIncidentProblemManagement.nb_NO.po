@@ -4,8 +4,7 @@ msgstr ""
 "POT-Creation-Date: 2020-01-24 14:16+0000\n"
 "PO-Revision-Date: 2023-03-30 07:16+0000\n"
 "Last-Translator: Peter Værlien <peter.varlien@kdrs.no>\n"
-"Language-Team: Norwegian Bokmål <https://translations.znuny.org/projects/"
-"znuny/itsmincidentproblemmanagement/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://translations.znuny.org/projects/znuny/itsmincidentproblemmanagement/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -95,8 +94,7 @@ msgstr "Ekstra ITSM-felt for saken."
 
 #. SysConfig
 msgid "Allows adding notes in the additional ITSM field screen of the agent interface."
-msgstr ""
-"Tillater å legge til notiser i de ekstra ITSM-feltene i saksbehandlerdelen."
+msgstr "Tillater å legge til notiser i de ekstra ITSM-feltene i saksbehandlerdelen."
 
 #. SysConfig
 msgid "Allows adding notes in the decision screen of the agent interface."
@@ -313,3 +311,4 @@ msgstr ""
 #. SysConfig
 msgid "Ticket decision."
 msgstr "Beslutning for saken."
+

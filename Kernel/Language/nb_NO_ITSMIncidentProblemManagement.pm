@@ -2,8 +2,8 @@
 # Copyright (C) 2021 Znuny GmbH, https://znuny.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 package Kernel::Language::nb_NO_ITSMIncidentProblemManagement;
@@ -20,16 +20,16 @@ sub Data {
 
     # Perl Module: Kernel/Output/HTML/FilterElementPost/ITSMIncidentProblemManagement.pm
     $Self->{Translation}->{'Link ticket'} = 'Koble sak';
-    $Self->{Translation}->{'Change Decision of %s%s%s'} = '';
-    $Self->{Translation}->{'Change ITSM fields of %s%s%s'} = '';
+    $Self->{Translation}->{'Change Decision of %s%s%s'} = 'Endre beslutning for %s%s%s';
+    $Self->{Translation}->{'Change ITSM fields of %s%s%s'} = 'Endre ITSM-feltene for %s%s%s';
 
     # Perl Module: var/packagesetup/ITSMIncidentProblemManagement.pm
     $Self->{Translation}->{'Review Required'} = 'Evaluering kreves';
     $Self->{Translation}->{'Decision Result'} = 'Beslutningsresultat';
     $Self->{Translation}->{'Approved'} = 'Godkjent';
-    $Self->{Translation}->{'Postponed'} = '';
-    $Self->{Translation}->{'Pre-approved'} = '';
-    $Self->{Translation}->{'Rejected'} = '';
+    $Self->{Translation}->{'Postponed'} = 'Utsatt';
+    $Self->{Translation}->{'Pre-approved'} = 'Forhåndsgodkjent';
+    $Self->{Translation}->{'Rejected'} = 'Avvist';
     $Self->{Translation}->{'Repair Start Time'} = 'Starttid for reparasjon';
     $Self->{Translation}->{'Recovery Start Time'} = 'Starttid for gjenoppretting';
     $Self->{Translation}->{'Decision Date'} = 'Beslutningsdato';
@@ -43,7 +43,7 @@ sub Data {
     $Self->{Translation}->{'Additional ITSM Fields'} = 'Ekstra ITSM-felt';
     $Self->{Translation}->{'Additional ITSM ticket fields.'} = 'Ekstra ITSM-felt for saken.';
     $Self->{Translation}->{'Allows adding notes in the additional ITSM field screen of the agent interface.'} =
-        'Tillater å legge til notiser i de ekstra ITSM-feltene i saksbehandlerdelen';
+        'Tillater å legge til notiser i de ekstra ITSM-feltene i saksbehandlerdelen.';
     $Self->{Translation}->{'Allows adding notes in the decision screen of the agent interface.'} =
         '';
     $Self->{Translation}->{'Allows defining new types for ticket (if ticket type feature is enabled).'} =
