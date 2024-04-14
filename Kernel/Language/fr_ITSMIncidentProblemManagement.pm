@@ -39,7 +39,7 @@ sub Data {
     $Self->{Translation}->{'closed with workaround'} = 'Fermé avec contournement';
 
     # SysConfig
-    $Self->{Translation}->{'Add a decision!'} = 'Ajouter une décision';
+    $Self->{Translation}->{'Add a decision!'} = 'Ajouter une décision!';
     $Self->{Translation}->{'Additional ITSM Fields'} = 'Champs ITSM additionnels';
     $Self->{Translation}->{'Additional ITSM ticket fields.'} = 'Champs ITSM additionnels.';
     $Self->{Translation}->{'Allows adding notes in the additional ITSM field screen of the agent interface.'} =
