@@ -211,7 +211,8 @@ END
     }
 
     # Define criticality field search pattern, use without the x modifier and non greedy match (.+?)
-    my $CriticalityFieldPattern = '<div class="Row Row_DynamicField_ITSMCriticality .+?<select .+?</div>\s*</div>';
+    my $CriticalityFieldPattern
+        = '<div><div class="Row Row_DynamicField_ITSMCriticality .+?<select .+?</div>\s*</div></div>';
 
     # Find criticality field and move before the priority field
     if ( ${ $Param{Data} } =~ m{($CriticalityFieldPattern)}ms ) {
@@ -229,7 +230,7 @@ END
     }
 
     # Define impact field search pattern, use without the x modifier and non greedy match (.+?)
-    my $ImpactFieldPattern = '<div class="Row Row_DynamicField_ITSMImpact .+?<select .+?</div>\s*</div>';
+    my $ImpactFieldPattern = '<div><div class="Row Row_DynamicField_ITSMImpact .+?<select .+?</div>\s*</div></div>';
 
     # Find Impact field and move before the priority field
     if ( ${ $Param{Data} } =~ m{($ImpactFieldPattern)}ms ) {
