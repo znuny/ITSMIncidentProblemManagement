@@ -703,4 +703,29 @@
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="DynamicFieldScreens###ITSMIncidentProblemManagement" Required="1" Valid="1">
+        <Description Translatable="1">Screens for which it is possible to enable or disable dynamic fields.</Description>
+        <Navigation>Frontend::Base::DynamicFieldScreens</Navigation>
+        <Value>
+            <Hash>
+                <!-- Views -->
+                <Item Key="Ticket::Frontend::AgentTicketAddtlITSMField###DynamicField">AgentTicketAddtlITSMField</Item>
+                <Item Key="Ticket::Frontend::AgentTicketDecision###DynamicField">AgentTicketDecision</Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="DynamicFields::ScreenConfiguration::ConfigKeysOfScreensByObjectType###ITSMIncidentProblemManagement" Required="1" Valid="1">
+        <Description Translatable="1">Config keys and their action to activate dynamic fields in different screens, grouped by object type.</Description>
+        <Navigation>Frontend::Base::DynamicFieldScreens</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Ticket">
+                    <Hash>
+                        <Item Key="Ticket::Frontend::AgentTicketAddtlITSMField###DynamicField">AgentTicketAddtlITSMField</Item>
+                        <Item Key="Ticket::Frontend::AgentTicketDecision###DynamicField">AgentTicketDecision</Item>
+                    </Hash>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
 </otrs_config>
