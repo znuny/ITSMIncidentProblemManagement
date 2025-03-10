@@ -16,12 +16,12 @@ sub Data {
     my $Self = shift;
 
     # JS Template: Kernel/Output/JavaScript/Templates/Standard/Agent/ITSMIncidentProblemManagement/ServiceIncidentState.html.tmpl
-    $Self->{Translation}->{'Service Incident State'} = '';
+    $Self->{Translation}->{'Service Incident State'} = 'Stan Zdarzenia Serwisowego';
 
     # Perl Module: Kernel/Output/HTML/FilterElementPost/ITSMIncidentProblemManagement.pm
     $Self->{Translation}->{'Link ticket'} = 'Połącz zgłoszenie';
     $Self->{Translation}->{'Change Decision of %s%s%s'} = 'Zmień decyzję %s%s%s';
-    $Self->{Translation}->{'Change ITSM fields of %s%s%s'} = '';
+    $Self->{Translation}->{'Change ITSM fields of %s%s%s'} = 'Zmień pola ITSM %s%s%s';
 
     # Perl Module: var/packagesetup/ITSMIncidentProblemManagement.pm
     $Self->{Translation}->{'Review Required'} = 'Wymagany przegląd';
@@ -41,7 +41,7 @@ sub Data {
     # SysConfig
     $Self->{Translation}->{'Add a decision!'} = 'Dodaj decyzję!';
     $Self->{Translation}->{'Additional ITSM Fields'} = 'Dodatkowe pola ITSM';
-    $Self->{Translation}->{'Additional ITSM ticket fields.'} = '';
+    $Self->{Translation}->{'Additional ITSM ticket fields.'} = 'Dodatkowe pola ITSM zgłoszenia.';
     $Self->{Translation}->{'Allows adding notes in the additional ITSM field screen of the agent interface.'} =
         'Pozwala na dodawanie notatek na ekranie z dodatkowymi polami ITSM w panelu agenta.';
     $Self->{Translation}->{'Allows adding notes in the decision screen of the agent interface.'} =
@@ -106,7 +106,7 @@ sub Data {
         '';
     $Self->{Translation}->{'Required permissions to use the decision screen in the agent interface.'} =
         '';
-    $Self->{Translation}->{'Service Incident State and Priority Calculation'} = '';
+    $Self->{Translation}->{'Service Incident State and Priority Calculation'} = 'Stan Zdarzenia Serwisowego i Obliczanie Priorytetu';
     $Self->{Translation}->{'Sets the service in the additional ITSM field screen of the agent interface (Ticket::Service needs to be activated).'} =
         '';
     $Self->{Translation}->{'Sets the service in the decision screen of the agent interface (Ticket::Service needs to be activated).'} =
@@ -147,10 +147,10 @@ sub Data {
         '';
     $Self->{Translation}->{'Shows the title fields in the decision screen of the agent interface.'} =
         '';
-    $Self->{Translation}->{'Ticket decision.'} = '';
+    $Self->{Translation}->{'Ticket decision.'} = 'Decyzja dotycząca zgłoszenia.';
 
 
-    push @{ $Self->{JavaScriptStrings} // [] }, (
+    push @{ $Self->{JavaScriptStrings} //= [] }, (
     'Service Incident State',
     );
 

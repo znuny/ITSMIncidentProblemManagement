@@ -150,7 +150,7 @@ sub Data {
     $Self->{Translation}->{'Ticket decision.'} = 'Decisão de ticket.';
 
 
-    push @{ $Self->{JavaScriptStrings} // [] }, (
+    push @{ $Self->{JavaScriptStrings} //= [] }, (
     'Service Incident State',
     );
 
