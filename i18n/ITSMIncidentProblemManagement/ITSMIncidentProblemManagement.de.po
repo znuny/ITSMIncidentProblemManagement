@@ -4,8 +4,7 @@ msgstr ""
 "POT-Creation-Date: 2020-01-24 14:16+0000\n"
 "PO-Revision-Date: 2022-03-18 15:53+0000\n"
 "Last-Translator: Denny Korsukéwitz <dk@znuny.com>\n"
-"Language-Team: German <https://translations.znuny.org/projects/znuny/"
-"itsmincidentproblemmanagement/de/>\n"
+"Language-Team: German <https://translations.znuny.org/projects/znuny/itsmincidentproblemmanagement/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -312,3 +311,4 @@ msgstr "Zeigt die Titelfelder in der Ansicht \"Entscheidung\" im Agenten-Interfa
 #. SysConfig
 msgid "Ticket decision."
 msgstr "Ticket-Entscheidung."
+
