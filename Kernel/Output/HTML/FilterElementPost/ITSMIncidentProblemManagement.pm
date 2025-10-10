@@ -55,7 +55,7 @@ sub Run {
     if ( $Param{TemplateFile} eq 'AgentTicketZoom' ) {
 
         # get ticket id
-        my $TicketID = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'TicketID' );
+        my $TicketID     = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'TicketID' );
         my $TicketNumber = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'TicketNumber' );
 
         # get ticket id in case necessary
