@@ -59,7 +59,7 @@ sub Run {
         my $TicketNumber = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'TicketNumber' );
 
         # get ticket id in case necessary
-        if ( !$TicketID ) {
+        if ( !$TicketID && $TicketNumber ) {
             $TicketID = $TicketObject->TicketIDLookup(
                 TicketNumber => $TicketNumber,
             );
