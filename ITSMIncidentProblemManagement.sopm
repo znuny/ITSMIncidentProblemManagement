@@ -11,7 +11,6 @@
     <Description Lang="de">Das OTRS::ITSM Incident und Problem Management Paket.</Description>
     <Description Lang="es">Paquete Incident and Problem Management de OTRS::ITSM.</Description>
     <Description Lang="hu">Az OTRS::ITSM incidens- és problémamenedzsment csomag.</Description>
-    <ChangeLog Version="6.5.3" Date="2025-10-10 11:01:00 -0300">Fixed URL handling with TicketNumber parameter.</ChangeLog>
     <ChangeLog Version="6.5.2" Date="2025-02-21 09:58:52 +0100">Added missing DynamicFieldScreens configuration.</ChangeLog>
     <ChangeLog Version="6.5.1" Date="2023-02-20 16:01:15 +0100">Initial release for Znuny 6.5.</ChangeLog>
     <ChangeLog Version="6.4.3" Date="2022-11-09 09:31:26 +0100">Updated translations.</ChangeLog>
