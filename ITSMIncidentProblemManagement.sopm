@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <otrs_package version="1.0">
     <Name>ITSMIncidentProblemManagement</Name>
-    <Version>6.5.3</Version>
+    <Version>6.5.2</Version>
     <Framework>6.5.x</Framework>
     <PackageRequired Version="6.5.1">ITSMCore</PackageRequired>
     <Vendor>Znuny</Vendor>
