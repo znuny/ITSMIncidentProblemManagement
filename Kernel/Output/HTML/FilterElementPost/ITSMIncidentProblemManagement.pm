@@ -55,7 +55,23 @@ sub Run {
     if ( $Param{TemplateFile} eq 'AgentTicketZoom' ) {
 
         # get ticket id
-        my $TicketID = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'TicketID' );
+        my $TicketID     = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'TicketID' );
+        my $TicketNumber = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'TicketNumber' );
+
+        # get ticket id in case necessary
+        if ( !$TicketID && $TicketNumber ) {
+            $TicketID = $TicketObject->TicketIDLookup(
+                TicketNumber => $TicketNumber,
+            );
+        }
+
+        if ( !$TicketID ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Need TicketID or TicketNumber!",
+            );
+            return;
+        }
 
         # Get ticket attributes.
         my %Ticket = $TicketObject->TicketGet(
