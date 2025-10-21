@@ -141,7 +141,7 @@ END
         {
 
             my $TranslatedFieldLabel = $LayoutObject->{LanguageObject}->Translate($FieldName);
-            my $FieldPattern         = '<label>' . $TranslatedFieldLabel . ':</label>.+?<div class="Clear"></div>';
+            my $FieldPattern         = '<span[^>]*>\s*<label>' . $TranslatedFieldLabel . ':</label>.*?</span>';
             next FIELDNAME if ${ $Param{Data} } !~ m{($FieldPattern)}ms;
 
             my $Field = $1;
