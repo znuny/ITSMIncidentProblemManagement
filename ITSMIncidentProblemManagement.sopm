@@ -2,15 +2,15 @@
 <otrs_package version="1.0">
     <Name>ITSMIncidentProblemManagement</Name>
     <Version>7.2.2</Version>
-    <Framework>7.2.x</Framework>
-    <PackageRequired Version="7.2.1">ITSMCore</PackageRequired>
+    <Framework>7.3.x</Framework>
+    <PackageRequired Version="7.3.1">ITSMCore</PackageRequired>
     <Vendor>Znuny</Vendor>
     <URL>https://www.znuny.org/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
-    <Description Lang="en">The OTRS::ITSM Incident and Problem Management package.</Description>
-    <Description Lang="de">Das OTRS::ITSM Incident und Problem Management Paket.</Description>
-    <Description Lang="es">Paquete Incident and Problem Management de OTRS::ITSM.</Description>
-    <Description Lang="hu">Az OTRS::ITSM incidens- és problémamenedzsment csomag.</Description>
+    <Description Lang="en">The ITSM Incident and Problem Management package.</Description>
+    <Description Lang="de">Das ITSM Incident und Problem Management Paket.</Description>
+    <Description Lang="es">Paquete Incident and Problem Management de ITSM.</Description>
+    <Description Lang="hu">Az ITSM incidens- és problémamenedzsment csomag.</Description>
     <ChangeLog Version="7.2.2" Date="2025-10-21 10:08:18 +0200">Fixed ticket misconfiguration after adding AccountedTime caused by outdated Regex.</ChangeLog>
     <ChangeLog Version="7.2.1" Date="2025-08-29 13:47:19 +0200">nitial release for Znuny 7.2.</ChangeLog>
     <ChangeLog Version="7.1.3" Date="2025-04-03 11:27:14 +0200">Updated translations.</ChangeLog>
@@ -154,7 +154,7 @@
     ]]></CodeReinstall>
     <CodeUpgrade Type="pre" Version="3.2.91"><![CDATA[
 
-        # uninstall Feature AddOn OTRSServiceIncidentState that has been integrated in OTRS::ITSM 3.2.91 (OTRS::ITSM 6.0.30 Beta 1)
+        # uninstall Feature AddOn OTRSServiceIncidentState that has been integrated in ITSM 3.2.91 (ITSM 6.0.30 Beta 1)
         $Kernel::OM->Get('Kernel::System::Package')->_PackageUninstallMerged(
             Name => 'OTRSServiceIncidentState',
         );
@@ -234,7 +234,7 @@
         You are about to install the Znuny package ITSMIncidentProblemManagement.<br/>
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroInstall>
@@ -247,7 +247,7 @@
         Sie sind im Begriff das Znuny-Paket ITSMIncidentProblemManagement zu installieren.<br/>
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroInstall>
@@ -260,7 +260,7 @@
         Usted esta apunto de instalar el paquete ITSMIncidentProblemManagement de Znuny.<br/>
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroInstall>
@@ -273,7 +273,7 @@
         Ön az ITSMIncidentProblemManagement Znuny csomag telepítésére készül.<br/>
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroInstall>
@@ -286,7 +286,7 @@
         You are about to upgrade the Znuny package ITSMIncidentProblemManagement.<br/>
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroUpgrade>
@@ -299,7 +299,7 @@
         Sie sind im Begriff das Znuny-Paket ITSMIncidentProblemManagement zu aktualisieren.<br/>
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroUpgrade>
@@ -312,7 +312,7 @@
         Usted esta apunto de actualizar el paquete ITSMIncidentProblemManagement de Znuny.<br/>
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroUpgrade>
@@ -325,7 +325,7 @@
         Ön az ITSMIncidentProblemManagement Znuny csomag frissítésére készül.<br/>
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroUpgrade>
@@ -342,7 +342,7 @@
         The statistics that are associated with this package, will no longer be available if the package is uninstalled.
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroUninstall>
@@ -359,7 +359,7 @@
         Nach der Deinstallation sind die zu diesem Paket zugehörigen Statistiken nicht mehr verfügbar.
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroUninstall>
@@ -376,7 +376,7 @@
         Las estadísticas asociadas a este paquete no estarán disponibles si desinstala el paquete.
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroUninstall>
@@ -393,7 +393,7 @@
         Az ehhez a csomaghoz hozzárendelt statisztikák többé nem lesznek elérhetők, ha a csomagot eltávolítják.
         <br/>
         <br/>
-        ((enjoy))<br/>
+        <br/>
         <br/>
 
     ]]></IntroUninstall>
