@@ -57,7 +57,7 @@ sub Data {
     $Self->{Translation}->{'Defines if the service incident state should be shown during service selection in the agent interface.'} =
         '';
     $Self->{Translation}->{'Defines the default body of a note in the additional ITSM field screen of the agent interface.'} =
-        '';
+        'Określa domyślną treść notatki na ekranie dodatkowych pól ITSM w interfejsie agenta.';
     $Self->{Translation}->{'Defines the default body of a note in the decision screen of the agent interface.'} =
         '';
     $Self->{Translation}->{'Defines the default next state of a ticket after adding a note, in the additional ITSM field screen of the agent interface.'} =
@@ -87,7 +87,7 @@ sub Data {
     $Self->{Translation}->{'Dynamic fields shown in the additional ITSM field screen of the agent interface.'} =
         '';
     $Self->{Translation}->{'Dynamic fields shown in the decision screen of the agent interface.'} =
-        '';
+        'Pola dynamiczne wyświetlane na ekranie decyzyjnym interfejsu agenta.';
     $Self->{Translation}->{'Dynamic fields shown in the ticket zoom screen of the agent interface.'} =
         '';
     $Self->{Translation}->{'Enables the stats module to generate statistics about the average of ITSM ticket first level solution rate.'} =
