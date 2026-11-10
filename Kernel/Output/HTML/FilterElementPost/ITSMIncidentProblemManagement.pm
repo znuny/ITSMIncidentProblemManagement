@@ -141,7 +141,7 @@ END
         {
 
             my $TranslatedFieldLabel = $LayoutObject->{LanguageObject}->Translate($FieldName);
-            my $FieldPattern         = '<span[^>]*>\s*<label>' . $TranslatedFieldLabel . ':</label>.*?</span>';
+            my $FieldPattern         = '<span[^>]*>\s*<label>' . $TranslatedFieldLabel . ':</label>.*?</p>\s*</span>';
             next FIELDNAME if ${ $Param{Data} } !~ m{($FieldPattern)}ms;
 
             my $Field = $1;
@@ -152,7 +152,7 @@ END
             my $TranslatedCustomerIDLabel = $LayoutObject->{LanguageObject}->Translate('Customer ID');
 
             # add before the Customer ID field
-            ${ $Param{Data} } =~ s{(<label>$TranslatedCustomerIDLabel:</label>)}{$Field\n$1}ms;
+            ${ $Param{Data} } =~ s{(<span[^>]*>\s*<label>$TranslatedCustomerIDLabel:</label>)}{$Field\n$1}ms;
         }
 
         return 1;
