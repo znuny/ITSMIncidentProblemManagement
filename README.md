@@ -26,8 +26,8 @@ This package provides ITSM Incident and Problem Management for Znuny. It extends
 
 **Prerequisites**
 
-- Znuny 7.3
-- ITSMCore 7.3.1
+- Znuny 7.5
+- ITSMCore 7.5.1
 
 **Installation**
 
